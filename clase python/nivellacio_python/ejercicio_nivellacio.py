@@ -1,6 +1,7 @@
 
 import random
-
+from faker import Faker
+from funciones_ahorcado import getPalabra, transformaPalabra, compruebaLetra, compruebaEstado, compruebaIntentos
 m = "hola";
 print(m)
 print("Bienvenido a juegos de Hugo")
@@ -79,7 +80,26 @@ elif selecciona_juego == 2:
 
 #! JUEGO NÚMERO 3
 elif selecciona_juego == 3:
-    print("Juego en mantenimiento")
+    listaPalabras = ['aurora','boreal','lobo','luna','jabali','cabra','queso']
+    aciertoFinal = False
+    numIntentos = 6
+    #opcion 2
+    palabraSecreta = getPalabra(listaPalabras)
+    estado = transformaPalabra(palabraSecreta)
+    #Truco para printar lista sin corchetes
+
+    while aciertoFinal == False and numIntentos > 0:
+        print(" ".join(estado))
+        #op2
+        #print(*estado)
+        letra = input('Introduzca una letra: ')
+        estado, numIntentos = compruebaLetra(letra, palabraSecreta,estado, numIntentos)
+
+        if compruebaEstado(estado):
+            print('Has adivinado la palabra')
+            aciertoFinal = True
+        else:
+            compruebaIntentos(numIntentos)
 
 #! JUEGO NÚMERO 4
 elif selecciona_juego == 4:
