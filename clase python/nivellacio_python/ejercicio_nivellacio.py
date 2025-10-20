@@ -1,7 +1,7 @@
 
 import random
 
-m = "hola"
+m = "hola";
 print(m)
 print("Bienvenido a juegos de Hugo")
 selecciona_juego = int(input("Elije uno de los siguientes juegos escribiendo el número correspondiente" \
