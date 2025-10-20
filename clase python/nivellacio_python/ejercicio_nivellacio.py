@@ -49,7 +49,7 @@ if selecciona_juego == 1:
                 print("No es el número:", third_attempt)
                 print("Has PERDIDO, el número era:", number)
 
-#! JUEGO NÚMERO 2
+#! JUEGO NÚMERO 2 FALTAN CREAR LAS FUNCIONES
 elif selecciona_juego == 2:
     print("Tienes que sacar piedra, papel o tijera y juegas contra la máquina")
 
