@@ -109,7 +109,74 @@ elif selecciona_juego == 3:
 
 #! JUEGO NÚMERO 4 TRES EN RAYA
 elif selecciona_juego == 4:
-    print("Juego en mantenimiento")
+    def mostraTauler(tauler):
+        for fila in tauler:
+            for pos in fila:
+                print(pos, end=' | ')
+            print()
+        print()
+
+    def preguntaUser():
+        fila = input('Indica una fila (a,b,c): ')
+        columna = int(input('Indica una columna (1,2,3): '))
+        return fila, columna
+
+    def generaSimbol(i):
+        if i % 2 == 0:
+            simbol = 'X'
+        else:
+            simbol = 'O'
+        return simbol
+
+    def tradueixFila(fila):
+        if fila == 'a':
+            filaNumero = 1
+        elif fila == 'b':
+            filaNumero = 2
+        elif fila == 'c':
+            filaNumero = 3
+        else:
+            print('Has introduit fila incorrecta')
+            filaNumero = fila
+        return filaNumero
+
+    def comprobaGuanyador(tauler, simbol, fila, columna):
+        guanyador = False
+        if (tauler[fila][1] == simbol and tauler[fila][2] == simbol and tauler[fila][3] == simbol):
+            print(f'Has guanyat jugador {simbol}')
+            guanyador = True
+        if (tauler[1][columna] == simbol and tauler[2][columna] == simbol and tauler[3][columna] == simbol):
+            print(f'Has guanyat jugador {simbol}')
+            guanyador = True
+        if (tauler[1][1] == simbol and tauler[2][2] == simbol and tauler[3][3] == simbol):
+            print(f'Has guanyat jugador {simbol}')
+            guanyador = True
+        if (tauler[3][1] == simbol and tauler[2][2] == simbol and tauler[1][3] == simbol):
+            print(f'Has guanyat jugador {simbol}')
+            guanyador = True
+        return guanyador
+
+    tauler = [
+        [' ', '1', '2', '3'],
+        ['a', ' ', ' ', ' '],
+        ['b', ' ', ' ', ' '],
+        ['c', ' ', ' ', ' ']
+    ]
+
+    mostraTauler(tauler)
+    guanyador = False
+    i = 0
+    while guanyador == False and i < 9:
+        fila, columna = preguntaUser()
+        simbol = generaSimbol(i)
+        filaNumero = tradueixFila(fila)
+        tauler[filaNumero][columna] = simbol
+        mostraTauler(tauler)
+        guanyador = comprobaGuanyador(tauler, simbol, filaNumero, columna)
+        i += 1
+
+    if i == 9:
+        print('Heu empatat')
 
 #! JUEGO NÚMERO 5 BLACKJACK
 elif selecciona_juego == 5:
